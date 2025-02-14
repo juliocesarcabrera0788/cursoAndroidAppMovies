@@ -50,6 +50,9 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
 
+    implementation(libs.androidx.material.icons.extended)
+
+
     implementation(libs.coil.kt.coil.compose)
 
     testImplementation(libs.junit)
