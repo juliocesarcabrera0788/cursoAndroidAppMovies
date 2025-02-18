@@ -1,4 +1,4 @@
-package py.com.alexsa.movies.Screens
+ package py.com.alexsa.movies.Screens
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -60,6 +60,7 @@ import py.com.alexsa.movies.ui.theme.MoviesTheme
  *@author Julio Cabrera
  *Created 13/2/2025 at 20:55
  **/
+
 @Composable
 fun MainActivityScreen(listMovies: List<Movies>, listTrendingMovies: List<Movies>) {
     MoviesTheme {
