@@ -2,6 +2,7 @@ package py.com.alexsa.movies.Screens
 
 import android.icu.text.CaseMap.Title
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
@@ -40,6 +41,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import coil.compose.AsyncImagePainter.State.Empty.painter
+import coil.decode.ImageSource
 
 /**
  *@author Julio Cabrera
@@ -59,22 +62,6 @@ fun MovieDetailScreen() {
 }
 
 
-@Composable
-fun Content(padding: PaddingValues) {
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(padding)
-            .background(Black)
-    ) {
-        Text(
-            text = "title",
-            fontSize = 20.sp,
-            fontWeight = FontWeight.Bold,
-            color = White
-        )
-    }
-}
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TopBar(title: String) {
@@ -92,4 +79,20 @@ fun TopBar(title: String) {
             )
         }
     )
+}
+@Composable
+fun Content(padding: PaddingValues) {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(padding)
+            .background(Black)
+    ) {
+        Text(
+            text = "title",
+            fontSize = 20.sp,
+            fontWeight = FontWeight.Bold,
+            color = White
+        )
+    }
 }
