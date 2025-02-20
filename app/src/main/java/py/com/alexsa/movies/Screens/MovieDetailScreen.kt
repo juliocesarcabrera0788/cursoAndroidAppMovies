@@ -54,7 +54,7 @@ import java.time.format.TextStyle
 fun MovieDetailScreen(listMoreMovies: List<Movies>) {
     val movie = Movies(
         title = "La Mascara",
-        description = "Una pelicula de mierda",
+        description = "Una pelicula de mierda, Una pelicula de mierda, Una pelicula de mierda, Una pelicula de mierda",
         imageUrl = "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEglsuV8wrLxF88zWhabGp7cFIMJbs60KETlhZdZIcjKM_R4ug9-D6dGycMn2uAYePyJy9dA1baT5QA5G9mOplD91bDp_8P-TOaA2Ue_9URMoWFLpm_x3z15F5c1eUoWE3-D9ViY/s704/Pel%25C3%25ADculas+de+culto+-+La+m%25C3%25A1scara+01.jpg",
         year = 2023,
         duration = "1 HR 20 MIN",
@@ -65,7 +65,8 @@ fun MovieDetailScreen(listMoreMovies: List<Movies>) {
 
     Scaffold(
         modifier = Modifier.fillMaxSize(),
-        topBar = { TopBarJc(movie) }
+        topBar = { TopBarJc(movie) },
+        bottomBar = { BottomBar() }
     ) { innerPadding ->
 
 
@@ -159,13 +160,44 @@ fun Content(padding: PaddingValues, movie: Movies, listMovies: List<Movies>) {
                 modifier = Modifier.padding(start = 10.dp, top = 10.dp)
             )
             Buttons()
-            Text(movie.description,
-                color = White,
-                fontSize = 16.sp,
-                modifier = Modifier.padding(15.dp),
+            LazyVerticalGrid(
+                columns = GridCells.Fixed(1),
+                modifier = Modifier.padding(8.dp),
+                horizontalArrangement = Arrangement.spacedBy(8.dp)
+            ) {
+                item {
+                    Text(
+                        movie.description,
+                        color = White,
+                        fontSize = 16.sp,
+                        modifier = Modifier.padding(15.dp)
+                    )
+                }
+                item {
+                    MoreLikeThis(listMovies)
+                }
+                item {
+                    Spacer(modifier = Modifier.padding(10.dp))
+                }
+                item {
+                    Text(
+                        text = "Cast & Crew",
+                        color = White,
+                        fontSize = 18.sp,
+                        modifier = Modifier.padding(15.dp)
+                    )
+                }
+                item {
+                    Text(
+                        movie.description,
+                        color = White,
+                        fontSize = 16.sp,
+                        modifier = Modifier.padding(15.dp)
+                    )
+                }
+            }
 
-            )
-            MoreLikeThis(listMovies)
+
         }
     }
 }
@@ -185,12 +217,14 @@ fun Buttons() {
                 imageVector = Icons.Filled.Add,
                 contentDescription = "Agregar",
                 tint = White,
+                modifier = Modifier.size(35.dp)
             )
             Spacer(modifier = Modifier.padding(5.dp))
             Icon(
                 imageVector = Icons.Filled.Download,
                 contentDescription = "Descargar",
-                tint = White
+                tint = White,
+                modifier = Modifier.size(35.dp)
             )
         }
 
@@ -198,6 +232,7 @@ fun Buttons() {
             imageVector = Icons.Filled.PlayCircle,
             contentDescription = "Descargar",
             tint = White,
+            modifier = Modifier.size(35.dp)
         )
 
     }
@@ -209,7 +244,7 @@ fun MoreLikeThis(listMovies: List<Movies> = listOf()) {
         Text(
             text = "More Like This",
             color = White,
-            fontSize = 20.sp,
+            fontSize = 18.sp,
             style = androidx.compose.ui.text.TextStyle(fontWeight = FontWeight.Bold)
         )
         LazyRow(
