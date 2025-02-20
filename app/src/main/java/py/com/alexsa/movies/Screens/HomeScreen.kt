@@ -120,8 +120,8 @@ fun ItemMovis(movie: Movies) {
                 .fillMaxWidth()
                 .size(width = 150.dp, height = 200.dp)
                 .clip(RoundedCornerShape(10.dp))
-
         )
+
         Spacer(modifier = Modifier.padding(8.dp))
 
         Text(
